@@ -86,7 +86,7 @@ char* generate_key(size_t size)
   assert(size < 33);
   char* bytes = NULL;
   int chunk;
-  BUF_MEM *bptr;
+  BUF_MEM *bptr = NULL;
 
   unsigned char *buff = malloc(size + 1);
 

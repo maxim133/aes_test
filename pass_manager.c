@@ -2,6 +2,7 @@
 #include "crypto.h"
 #include <assert.h>
 #include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
@@ -162,7 +163,7 @@ pass_t* decrypt_passdata(const encrypted_pass_t* input)
     goto exit;
   }
 
-  len = decrypt(password_buffer, strlen(password_buffer), input->key, 
+  len = decrypt(password_buffer, decoded_len, input->key, 
     input->iv, decrypted_pass->password);
   if (len == 0)
   {
