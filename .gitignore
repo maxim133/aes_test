@@ -13,3 +13,4 @@ _deps
 *.sublime-project
 *.sublime-workspace
 bin
+build
