@@ -88,7 +88,7 @@ char* generate_key(size_t size)
   int chunk;
   BUF_MEM *bptr = NULL;
 
-  unsigned char *buff = malloc(size + 1);
+  unsigned char buff[33];
 
   BIO* b64 = BIO_new(BIO_f_base64());
   if (b64 == NULL) 
@@ -115,13 +115,12 @@ char* generate_key(size_t size)
   BIO_write(out, "\0", 1);
   BIO_get_mem_ptr(out, &bptr);
 
-  char* key = malloc(size);
+  char* key = malloc(size + 1);
   strncpy(key, bptr->data, size);
   key[size] = '\0';
 
   BIO_set_close(out, BIO_CLOSE);
   BIO_free_all(out);
-  free(buff);
 
   return key;
 }
